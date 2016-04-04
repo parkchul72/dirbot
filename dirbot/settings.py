@@ -13,6 +13,7 @@ BOT_NAME = 'dirbot'
 
 SPIDER_MODULES = ['dirbot.spiders']
 NEWSPIDER_MODULE = 'dirbot.spiders'
+DEFAULT_ITEM_CLASS = 'dirbot.items.NaverWebsite'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -61,9 +62,9 @@ NEWSPIDER_MODULE = 'dirbot.spiders'
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'dirbot.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'dirbot.pipelines.FilterWordsPipeline': 1,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -83,3 +84,5 @@ NEWSPIDER_MODULE = 'dirbot.spiders'
 #HTTPCACHE_DIR='httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+DOWNLOAD_HANDLERS = {'s3': None,}
